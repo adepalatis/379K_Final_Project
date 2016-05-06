@@ -1,4 +1,5 @@
 from __future__ import division
+import xgboost as xgb
 import pandas as pd
 import numpy as np
 from sklearn import cross_validation, linear_model, metrics, preprocessing
@@ -38,9 +39,10 @@ def main():
     """ Fit and predict
         Used one-hot encoding from sklearn.preprocessing
         Tried standardscale
+
     """
     # === Make the model with logistic regressor
-    model = linear_model.LogisticRegression(C = 3.0, n_jobs = -1)
+    model = xgb.XGBClassifier(max_depth = 11, n_estimators = 1000, learning_rate = 0.1)
 
     # === Loading data from csv files === #
     print "Loading data"
